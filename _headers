@@ -1,0 +1,16 @@
+# Cloudflare Pages / Netlify 快取規則
+/assets/img/*
+  Cache-Control: public, max-age=86400
+/assets/vendor/*
+  Cache-Control: public, max-age=604800
+/assets/*.css
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/*.js
+  Cache-Control: public, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
