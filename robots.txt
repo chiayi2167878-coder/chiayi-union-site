@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /news-template.html
+Sitemap: https://chiayi-union.pages.dev/sitemap.xml
