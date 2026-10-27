@@ -733,6 +733,7 @@ footer .fcp{border-top:0}
 /* 入會三步：深藍底（取代原本的藍色） */
 #shore{--deep:#fff;--sub:#D8E1EB;--soft:#D8E1EB;--coral:#FF7A45;--on-coral:#12263A;--coral-ink:#FFB08A;--coral-lt:#22405C;--card:#12263A;--foam:#12263A;background:#12263A!important;color:#fff!important}
 #shore .step .dot{background:var(--coral);color:#12263A}
+#shore .step .dot,.step .dot{clip-path:none!important;border-radius:14px!important;padding-top:0!important;width:60px;height:60px}
 #shore .pill.solid{background:var(--coral);border-color:var(--coral);color:#12263A}
 #shore .pill.solid:hover{background:#FFB08A;color:#12263A}
 #shore .more{color:#fff}
