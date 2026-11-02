@@ -4,6 +4,10 @@
 'use strict';
 var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* 換頁一律從最上面開始（網址帶 #錨點 的連結除外，例如「聯絡我們」） */
+try{if('scrollRestoration' in history)history.scrollRestoration='manual'}catch(e){}
+if(!location.hash)window.scrollTo(0,0);
+window.addEventListener('pageshow',function(ev){if(ev.persisted&&!location.hash)window.scrollTo(0,0)});
 var root=document.documentElement,HAS=!!(window.gsap&&window.ScrollTrigger);
 if(HAS)gsap.registerPlugin(ScrollTrigger);
 function css(n){return getComputedStyle(root).getPropertyValue(n).trim()}
@@ -148,5 +152,8 @@ if(cover){
 }
 
 /* 從別頁帶錨點進來時，等字型和動畫就位後再對齊一次 */
-window.addEventListener('load',function(){if(location.hash.length>1){var el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el)el.scrollIntoView()}if(HAS)ScrollTrigger.refresh();setDepthFromScroll()});
+window.addEventListener('load',function(){if(location.hash.length>1){var el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el)el.scrollIntoView()}if(HAS)ScrollTrigger.refresh();setDepthFromScroll();
+  /* ScrollTrigger 會把瀏覽器的捲動還原改回 auto，所以載入後再鎖一次、並確實回到最上面（按「上一頁」也一樣） */
+  if(!location.hash){try{history.scrollRestoration='manual'}catch(e){}if(HAS&&ScrollTrigger.clearScrollMemory)ScrollTrigger.clearScrollMemory();window.scrollTo(0,0);setTimeout(function(){window.scrollTo(0,0);setDepthFromScroll()},60)}
+});
 })();
