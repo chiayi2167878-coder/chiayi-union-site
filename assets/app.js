@@ -78,7 +78,7 @@ $('.ni').forEach(function(w){var b=w.querySelector(':scope>button');if(b)wirePan
 /* 最新消息：分類篩選 */
 var chips=document.getElementById('nchips');
 if(chips){
-  var cats=['全部','勞保局公告','會員服務','課程活動','權益提醒','工會公告'],items=$('.ni'),none=document.getElementById('nnone');
+  var cats=['全部','勞保局公告','勞保小知識','會員服務','課程活動','權益提醒','工會公告'],items=$('.ni'),none=document.getElementById('nnone');
   cats.forEach(function(c,i){
     var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',String(i===0));
     b.addEventListener('click',function(){
